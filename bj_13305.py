@@ -1,29 +1,19 @@
-import heapq
-
 n = int(input())
-d = list(map(int, input().split()))
-tmp = list(map(int, input().split()))
+roads = list(map(int, input().split()))
+costs = list(map(int, input().split()))
 
-i = 1
-first = d[0] + tmp[0]
-m = []
-start = 0
-total = first
-while i < n-1:
-    if tmp[start] >= tmp[start + 1]:
-        start += 1
-    total += tmp[start] * d[i]
-    print(total)
-    i += 1
-print(total)
+res = roads[0] * costs[0]
+m = costs[0]
+dist = 0
+for i in range(1, n-1):
+    if costs[i] < m:
+        res += m * dist
+        dist = roads[i]
+        m = costs[i]
+    else:
+        dist += roads[i]
 
+    if i == n - 2:
+        res += m * dist
 
-
-# while i < n - 1:
-#
-#     if c[i] <= c[i+1]:
-#         total += c[i] * d[i]
-#         total += c[i] * d[i+1]
-#     else:
-#
-#     i += 1
+print(res)
