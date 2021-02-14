@@ -1,19 +1,20 @@
 n = int(input())
-roads = list(map(int, input().split()))
-costs = list(map(int, input().split()))
+s = list(map(int, input().split()))
+c = list(map(int, input().split()))
 
-res = roads[0] * costs[0]
-m = costs[0]
-dist = 0
+
+total = s[0] * c[0]
+start = c[0]
+distance = 0
+
 for i in range(1, n-1):
-    if costs[i] < m:
-        res += m * dist
-        dist = roads[i]
-        m = costs[i]
+    if c[i] < start:
+        total += c[i] * distance
+        start = c[i]
+        distance = s[i]
     else:
-        dist += roads[i]
+        distance += s[i]
 
     if i == n - 2:
-        res += m * dist
-
-print(res)
+        total += start * distance
+print(total)
