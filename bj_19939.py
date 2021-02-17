@@ -6,10 +6,10 @@ while i <= k:
     sum += i
     i += 1
 
-if n - k < k:
+if n - sum < 0:
     print(-1)
 else:
-    if n - sum == 0:
+    if (n - sum) % k == 0:
         print(k-1)
     else:
         print(k)
